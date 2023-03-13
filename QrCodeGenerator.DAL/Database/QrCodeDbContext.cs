@@ -8,7 +8,7 @@ using QrCodeGenerator.DAL.Entities;
 
 namespace QrCodeGenerator.DAL.Database
 {
-    internal class QrCodeDbContext : DbContext
+    public class QrCodeDbContext : DbContext
     {
         public QrCodeDbContext(DbContextOptions<QrCodeDbContext> options) : base(options)
         {
