@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QrCodeGenerator.DAL.Entities
 {
-    public class QrCode
+    public class QrCode : BaseEntity
     {
         public byte[] Code { get; set; }
         public int UserId { get; set; }
