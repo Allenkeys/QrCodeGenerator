@@ -16,6 +16,6 @@ namespace QrCodeGenerator.DAL.Database
         }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<QrCode> Tasks { get; set; }
+        public DbSet<QrCode> QrCodes { get; set; }
     }
 }
