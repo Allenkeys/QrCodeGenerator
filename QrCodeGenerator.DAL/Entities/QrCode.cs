@@ -9,6 +9,7 @@ namespace QrCodeGenerator.DAL.Entities
     public class QrCode : BaseEntity
     {
         public byte[] Code { get; set; }
+        public string Title { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
     }
