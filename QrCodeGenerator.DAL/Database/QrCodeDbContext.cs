@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using QrCodeGenerator.DAL.Entities;
 
 namespace QrCodeGenerator.DAL.Database
@@ -47,10 +42,10 @@ namespace QrCodeGenerator.DAL.Database
                 .IsUnique();
 
                 e.Property(u => u.Email)
-                .HasMaxLength(50)    
+                .HasMaxLength(50)
                 .IsRequired();
             });
-
+            
             base.OnModelCreating(modelBuilder);
         }
     }
