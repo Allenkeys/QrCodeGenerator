@@ -1,13 +1,21 @@
 ﻿using QrCodeGenerator.BLL.Interfaces;
+using QRCoder;
 
 namespace QrCodeGenerator.BLL.Implementations
 {
-    public interface QrcodeGenerator : IQrcodeGenerator
+    internal class QrcodeGenerator : IQrcodeGenerator
     {
-        byte[] GernerateQR(string text)
+        public byte[] GenerateQR(string text)
         {
-            byte[] data = new byte[text.Length];
-            return data;
+            byte[] code = null;
+            if (!string.IsNullOrEmpty(text))
+            {
+                QRCodeGenerator qRCodeGenerator = new QRCodeGenerator();
+                QRCodeData data = qRCodeGenerator.CreateQrCode(text, QRCodeGenerator.ECCLevel.Q);
+                BitmapByteQRCode bitmapQRCode = new BitmapByteQRCode(data);
+                code = bitmapQRCode.GetGraphic(20);
+            }
+            return code;
         }
     }
 }
