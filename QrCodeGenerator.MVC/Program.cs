@@ -1,10 +1,15 @@
 using Microsoft.EntityFrameworkCore;
+using QrCodeGenerator.BLL.Interfaces;
+using QrCodeGenerator.BLL.Implementations;
 using QrCodeGenerator.DAL.Database;
+using QRCoder;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<IQrcodeGenerator, QrcodeGenerator>();
 
 builder.Services.AddDbContext<QrCodeDbContext>(option => option
     .UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));

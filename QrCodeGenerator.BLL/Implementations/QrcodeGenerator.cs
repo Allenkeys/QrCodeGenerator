@@ -1,13 +1,14 @@
-﻿using QrCodeGenerator.BLL.Interfaces;
+﻿using System;
+using QrCodeGenerator.BLL.Interfaces;
 using QRCoder;
 
 namespace QrCodeGenerator.BLL.Implementations
 {
-    internal class QrcodeGenerator : IQrcodeGenerator
+    public class QrcodeGenerator : IQrcodeGenerator
     {
         public byte[] GenerateQR(string text)
         {
-            byte[] code = null;
+            byte[] code = Array.Empty<byte>();
             if (!string.IsNullOrEmpty(text))
             {
                 QRCodeGenerator qRCodeGenerator = new QRCodeGenerator();

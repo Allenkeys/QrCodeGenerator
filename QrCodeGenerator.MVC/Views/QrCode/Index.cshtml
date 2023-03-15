@@ -1,0 +1,23 @@
+﻿@model QrCodeGenerator.BLL.ViewModels.QrGeneratorVM;
+@{
+    ViewData["Title"] = "QrCode Generator";
+    string QrImageUrl = @Model.QrImageUrl != null ? @Model.QrImageUrl : "";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">
+    
+    <div class="col-lg-6 m-auto">
+        <form asp-controller="QrCode" asp-action="OutPut">
+            <textarea name="text" class="form-control mb-3" placeholder="enter text here..."></textarea>
+            <button type="submit" class="btn btn-primary">Generate</button>
+        </form>
+        @if(@ViewData["code"] != null)
+        {
+            <div class="w-50 m-auto">
+                <img src="@TempData["code"]" class="img-fluid h-100 w-100 mb-3" />
+            </div>
+        }
+    </div>
+
+</div>
