@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using QrCodeGenerator.DAL.Entities;
+using TodoList.BLL.Models;
 
 namespace QrCodeGenerator.BLL.Interfaces
 {
-    internal interface IUserService
+    public interface IUserService
     {
-        void Create();
-        IEnumerable<User> GetUsers();
+        void Create(CreateUserVM model);
+        Task<IEnumerable<User>> GetUsers();
         Task<IEnumerable<User>> GetUsersWithQrCodeAsync();
     }
 }
