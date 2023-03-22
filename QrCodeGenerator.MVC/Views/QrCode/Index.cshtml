@@ -3,21 +3,31 @@
     ViewData["Title"] = "QrCode Generator";
     string QrImageUrl = @Model.QrImageUrl != null ? @Model.QrImageUrl : "";
 }
-<h1>@ViewData["Title"]</h1>
 
-<div class="row">
-    
-    <div class="col-lg-6 m-auto">
-        <form asp-controller="QrCode" asp-action="OutPut">
-            <textarea name="text" class="form-control mb-3" placeholder="enter text here..."></textarea>
-            <button type="submit" class="btn btn-primary">Generate</button>
-        </form>
-        @if(@ViewData["code"] != null)
-        {
-            <div class="w-50 m-auto">
-                <img src="@TempData["code"]" class="img-fluid h-100 w-100 mb-3" />
-            </div>
-        }
+<section class="inner-page">
+    <div class="container">
+        <h1>@ViewData["Title"]</h1>
+        <div class="col-lg-6 m-auto">
+            <form method="post">
+                <textarea name="text" class="form-control mb-3" placeholder="enter text here..." required></textarea>
+                <button type="submit" class="btn btn-primary">Generate</button>
+            </form>
+            @if (QrImageUrl != "")
+            {
+
+                <div class="w-50 m-auto">
+                    <div data-aos="zoom-in" data-aos-delay="100">
+                        <div class="icon-box iconbox-blue">
+                            <div class="">
+                                <img src="@QrImageUrl" class="img-fluid h-100 w-100 mb-3" />
+                            </div>
+                            <div class="text-center"><button class="btn btn-primary" type="button"><a download="@QrImageUrl">Download</a> </button></div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
     </div>
+</section>
 
-</div>
