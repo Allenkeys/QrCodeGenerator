@@ -25,7 +25,7 @@ namespace QrCodeGenerator.MVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult OutPut(string text)
+        public IActionResult Index(string text)
         {
             if (string.IsNullOrEmpty(text))
             {
@@ -38,14 +38,16 @@ namespace QrCodeGenerator.MVC.Controllers
                 QrGeneratorVM model = new QrGeneratorVM();
                 if (!string.IsNullOrEmpty(text))
                 {
-                    //model.QrImageUrl = CodeAsImage;
-                    ViewData["code"] = CodeAsImage;
-                    return RedirectToAction("Index");
+                    model.QrImageUrl = CodeAsImage;
+                    //TempData["code"] = CodeAsImage;
+
+
+                    return View(model);
                 }
             }
-            
 
-            return View("Index");
+
+            return View();
 
         }
 
