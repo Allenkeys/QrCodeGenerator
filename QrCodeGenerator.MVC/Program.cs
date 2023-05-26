@@ -9,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddRazorPages();
+
 builder.Services.AddScoped<IQrcodeGenerator, QrcodeGenerator>();
 
 builder.Services.AddDbContext<QrCodeDbContext>(option => option
@@ -34,5 +36,5 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
+//app.MapRazorPages();
 app.Run();
